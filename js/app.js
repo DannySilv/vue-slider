@@ -42,19 +42,26 @@ const app = new Vue(
         timer: null,
         
         },
+        // BONUS 2
+        created: function startTimer() {
+            this.timer = setInterval(this.next, 3000);
+        },  
+
         methods: {
             prev: function() {
                 this.currentSlide <= 0 ? this.currentSlide = this.items.length - 1 : this.currentSlide--;
             },
             next: function() {
                 this.currentSlide >= this.items.length -1 ? this.currentSlide = 0 : this.currentSlide++;
-            },  
-            
+            },
+            // BONUS 3
+            startTimer() {
+                this.timer = null;
+                this.timer = setInterval(this.next, 3000);
+            }, 
+            stopTimer() {
+                clearInterval(this.timer);
+            }, 
         },
-
-        // BONUS 2
-        created: function() {
-            this.timer = setInterval(this.next, 3000);
-        },          
     }
 ); 
