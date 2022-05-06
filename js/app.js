@@ -39,6 +39,7 @@ const app = new Vue(
                 }
             ],
         currentSlide: 0,
+        timer: null,
         
         },
         methods: {
@@ -47,7 +48,13 @@ const app = new Vue(
             },
             next: function() {
                 this.currentSlide >= this.items.length -1 ? this.currentSlide = 0 : this.currentSlide++;
-            },              
-        }
+            },  
+            
+        },
+
+        // BONUS 2
+        created: function() {
+            this.timer = setInterval(this.next, 3000);
+        },          
     }
 ); 
