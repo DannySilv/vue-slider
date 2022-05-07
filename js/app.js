@@ -40,22 +40,26 @@ const app = new Vue(
             ],
         currentSlide: 0,
         timer: null,
-        
         },
+        
         // BONUS 2
         created: function startTimer() {
             this.timer = setInterval(this.next, 3000);
         },  
 
         methods: {
-            prev: function() {
+            prev() {
                 this.currentSlide <= 0 ? this.currentSlide = this.items.length - 1 : this.currentSlide--;
             },
-            next: function() {
-                this.currentSlide >= this.items.length -1 ? this.currentSlide = 0 : this.currentSlide++;
+            next() {
+                this.currentSlide >= this.items.length - 1 ? this.currentSlide = 0 : this.currentSlide++;
+            },
+            // BONUS 1
+            thisImage(n) {
+                this.currentSlide = n;
             },
             // BONUS 3
-            startTimer() {
+            restartTimer() {
                 this.timer = null;
                 this.timer = setInterval(this.next, 3000);
             }, 

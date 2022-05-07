@@ -15,7 +15,7 @@
                 <div 
                 v-for="(item, index) in items" 
                 @mouseover="stopTimer" 
-                @mouseleave="startTimer"
+                @mouseleave="restartTimer"
                 class="item" 
                 :class="index === currentSlide ? 'active' : '' ">
                     <img :src="item.image" alt="">
@@ -31,7 +31,8 @@
                 <div 
                 v-for="(item, index) in items" 
                 class="thumb" 
-                :class="index === currentSlide ? 'active' : '' ">
+                :class="index === currentSlide ? 'active' : '' "
+                @click="thisImage(index)">
                     <img :src="item.image" alt="">
                 </div>             
                 <div @click="next" class="next"></div>
